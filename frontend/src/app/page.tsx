@@ -175,9 +175,9 @@ export default function HomePage() {
 
   return (
     <div className="bg-[#FAF8F2] text-[#382D25] min-h-screen">
-      {/* 1. CINEMATIC VIDEO HERO */}
-      <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#1A1714]">
-        {/* Crisp, Crystal-Clear Ambient Video Background */}
+      {/* 1. CINEMATIC VIDEO HERO (AWARD-WINNING LUXURY HOSPITALITY DESIGN) */}
+      <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#12100E]">
+        {/* Full-Bleed 4K Ambient Video Background */}
         <div className="absolute inset-0 z-0">
           <video
             ref={heroVideoRef}
@@ -187,142 +187,111 @@ export default function HomePage() {
             muted={heroMuted}
             playsInline
             poster="/images/kickbunk/google_01_garden_lights_night.jpg"
-            className="w-full h-full object-cover opacity-100"
+            className="w-full h-full object-cover scale-105 transform motion-safe:animate-pulse-slow"
           >
             <source
               src={heroVideoSrc}
               type="video/mp4"
             />
           </video>
-          {/* Subtle cinematic vignette allowing crystal-clear visuals while keeping text razor-sharp */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1714] via-black/30 to-black/50" />
+          {/* Subtle multi-layer cinematic vignette for maximum video clarity and ultra-legible typography */}
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#12100E] via-transparent to-black/60" />
         </div>
 
-        {/* Top Floating Controls: Live Status, Sound Toggle & View Full Video Toggle */}
+        {/* Top Luxury Live Bar */}
         <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex justify-between items-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-[#E2CA9E] text-xs font-medium">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Bengaluru & Tirupati Live</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-[#C5A46D]/40 text-[#E5C89C] text-xs font-medium shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span className="tracking-wide">Bengaluru Flagship & Tirupati Luxury Outlets</span>
           </div>
 
           <div className="flex items-center gap-3">
             <button
               onClick={toggleHeroSound}
-              className="p-2.5 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white transition-all shadow-lg hover:scale-105"
+              className="px-3 py-1.5 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-md border border-white/20 text-white text-xs font-medium flex items-center gap-2 transition-all shadow-lg hover:scale-105"
               title={heroMuted ? "Unmute Ambient Sound" : "Mute Sound"}
             >
-              {heroMuted ? <VolumeX className="w-4 h-4 text-stone-300" /> : <Volume2 className="w-4 h-4 text-[#E2CA9E]" />}
-            </button>
-            <button
-              onClick={() => setIsCardMinimized(!isCardMinimized)}
-              className="px-4 py-2 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-md border border-[#C5A46D]/60 text-white text-xs font-semibold tracking-wider flex items-center gap-2 transition-all shadow-lg hover:scale-105"
-              title="Toggle Full Background Video View"
-            >
-              {isCardMinimized ? (
+              {heroMuted ? (
                 <>
-                  <Eye className="w-4 h-4 text-[#E2CA9E]" />
-                  <span>Show Details</span>
+                  <VolumeX className="w-3.5 h-3.5 text-stone-300" />
+                  <span className="hidden sm:inline">Audio Off</span>
                 </>
               ) : (
                 <>
-                  <Maximize2 className="w-4 h-4 text-[#E2CA9E]" />
-                  <span>View Full Video</span>
+                  <Volume2 className="w-3.5 h-3.5 text-[#E5C89C]" />
+                  <span className="hidden sm:inline text-[#E5C89C]">Playing</span>
                 </>
               )}
             </button>
           </div>
         </div>
 
-        {/* Center Content: Translucent Luxury Glass Card OR Minimized Bottom Bar */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto py-8">
-          {!isCardMinimized ? (
-            <div className="bg-black/40 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-white/20 shadow-2xl space-y-6 text-white transition-all duration-500">
-              {/* Brand Monogram Badge */}
-              <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-[#C5A46D] text-[#E2CA9E] text-xs font-semibold uppercase tracking-[0.25em] shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#C5A46D]" />
-                European Luxury Dining & Resto-Bar
-              </div>
+        {/* Centerpiece: Weightless, Box-Free Luxury Typography Floating Directly Over The Video */}
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto py-12 space-y-8">
+          {/* Brand Monogram Badge */}
+          <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-black/40 backdrop-blur-md border border-[#C5A46D]/80 text-[#E5C89C] text-xs font-semibold uppercase tracking-[0.3em] shadow-xl">
+            <Sparkles className="w-3.5 h-3.5 text-[#C5A46D]" />
+            <span>European Luxury Dining & Resto-Bar</span>
+          </div>
 
-              {/* Hero Typography */}
-              <div className="space-y-3">
-                <h1 className="font-serif text-5xl sm:text-7xl font-bold tracking-tight text-white drop-shadow-lg leading-none">
-                  KICK BUNK
-                </h1>
-                <p className="font-serif italic text-2xl sm:text-3xl text-[#E2CA9E] font-normal tracking-wide drop-shadow">
-                  Where Flavours Meet Extraordinary Experiences.
-                </p>
-              </div>
+          {/* Grand Master Title */}
+          <div className="space-y-4">
+            <h1 className="font-serif text-6xl sm:text-8xl lg:text-9xl font-extrabold tracking-[0.18em] text-white drop-shadow-[0_12px_35px_rgba(0,0,0,0.95)] uppercase leading-none">
+              KICK BUNK
+            </h1>
+            <p className="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-[#F2DFBA] font-light tracking-wide drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]">
+              Where Flavours Meet Extraordinary Experiences.
+            </p>
+          </div>
 
-              <p className="max-w-2xl mx-auto text-sm sm:text-base text-stone-200 font-normal leading-relaxed drop-shadow">
-                An expansive sanctuary of fairy-lit garden cabanas, live charcoal tandoor gastronomy, and handcrafted nightlife mixology. Welcome to hospitality elevated.
-              </p>
+          {/* Concise Narrative */}
+          <p className="max-w-2xl mx-auto text-base sm:text-lg text-neutral-100 font-light leading-relaxed drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]">
+            An expansive sanctuary of fairy-lit garden cabanas, live charcoal tandoor gastronomy, and handcrafted nightlife mixology. Welcome to hospitality elevated.
+          </p>
 
-              {/* Dine-in quick action banner if guest has scanned table QR */}
-              {isDineInActive && tableNumber && (
-                <div className="inline-flex items-center gap-3 p-3.5 rounded-2xl bg-black/50 backdrop-blur-md border border-[#C5A46D] text-[#FAF8F2] text-sm font-semibold shadow-md">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#B66A4B] animate-ping" />
-                  <span>You are seated at <strong>Table {tableNumber}</strong>. Digital orders route directly to your table steward!</span>
-                </div>
-              )}
-
-              {/* Primary Action Buttons */}
-              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-                <a
-                  href="/menu"
-                  className="py-3.5 px-8 rounded-full bg-[#C5A46D] hover:bg-[#d8b77f] text-[#1A1714] font-bold text-xs tracking-[0.15em] uppercase transition-all shadow-lg hover:shadow-2xl hover:scale-105 flex items-center gap-2.5"
-                >
-                  <span>Explore Digital Menu</span>
-                  <ArrowRight className="w-4 h-4 text-[#1A1714]" />
-                </a>
-                <a
-                  href="/reservations"
-                  className="py-3.5 px-8 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-[#C5A46D] font-semibold text-xs tracking-[0.15em] uppercase transition-all hover:scale-105 flex items-center gap-2"
-                >
-                  <Calendar className="w-4 h-4 text-[#E2CA9E]" />
-                  <span>Reserve a Table</span>
-                </a>
-                <a
-                  href="#experience"
-                  className="py-3.5 px-6 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md text-white border border-white/20 font-medium text-xs tracking-wider transition-colors flex items-center gap-2 shadow-sm"
-                >
-                  <Play className="w-3.5 h-3.5 text-[#C5A46D] fill-[#C5A46D]" />
-                  <span>Watch Experience</span>
-                </a>
-              </div>
-            </div>
-          ) : (
-            <div className="animate-fade-in inline-flex flex-wrap items-center justify-center gap-4 p-4 rounded-full bg-black/60 backdrop-blur-md border border-[#C5A46D] shadow-2xl">
-              <span className="font-serif text-lg font-bold text-[#E2CA9E] px-3">KICK BUNK</span>
-              <a
-                href="/menu"
-                className="py-2.5 px-6 rounded-full bg-[#C5A46D] hover:bg-[#d8b77f] text-[#1A1714] font-bold text-xs tracking-wider uppercase transition-all shadow-md flex items-center gap-2"
-              >
-                <span>Order Now</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="/reservations"
-                className="py-2.5 px-6 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-semibold tracking-wider uppercase transition-all"
-              >
-                Reserve Table
-              </a>
-              <button
-                onClick={() => setIsCardMinimized(false)}
-                className="py-2.5 px-4 rounded-full bg-white/10 hover:bg-white/20 text-stone-300 text-xs flex items-center gap-1.5"
-              >
-                <Eye className="w-3.5 h-3.5" />
-                <span>Details</span>
-              </button>
+          {/* Dine-in quick action banner if guest has scanned table QR */}
+          {isDineInActive && tableNumber && (
+            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-black/60 backdrop-blur-md border border-[#C5A46D] text-[#FAF8F2] text-sm font-semibold shadow-2xl">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#C5A46D] animate-ping" />
+              <span>You are seated at <strong className="text-[#E5C89C]">Table {tableNumber}</strong>. Direct order routing active!</span>
             </div>
           )}
+
+          {/* Primary Action Buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-5 pt-4">
+            <a
+              href="/menu"
+              className="py-4 px-9 rounded-full bg-[#C5A46D] hover:bg-[#d8b77f] text-[#12100E] font-bold text-xs tracking-[0.2em] uppercase transition-all shadow-[0_10px_30px_rgba(197,164,109,0.4)] hover:scale-105 flex items-center gap-2.5"
+            >
+              <span>Explore Digital Menu</span>
+              <ArrowRight className="w-4 h-4 text-[#12100E]" />
+            </a>
+            <a
+              href="/reservations"
+              className="py-4 px-9 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md text-white border border-[#C5A46D] font-semibold text-xs tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 flex items-center gap-2.5"
+            >
+              <Calendar className="w-4 h-4 text-[#E5C89C]" />
+              <span>Reserve a Table</span>
+            </a>
+            <a
+              href="#experience"
+              className="py-4 px-7 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-medium text-xs tracking-wider transition-all hover:scale-105 flex items-center gap-2 shadow-lg"
+            >
+              <Play className="w-3.5 h-3.5 text-[#C5A46D] fill-[#C5A46D]" />
+              <span>Watch Experience</span>
+            </a>
+          </div>
         </div>
 
-        {/* Bottom Section: Ambient Video Switcher Tabs & Highlights */}
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 space-y-4">
-          {/* Interactive Video Switcher Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
+        {/* Bottom Floating Atmosphere Switcher Strip */}
+        <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+          <div className="bg-black/50 backdrop-blur-md border border-white/15 rounded-full p-2 flex flex-wrap items-center justify-center gap-2 shadow-2xl">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C5A46D] px-3 hidden md:inline">
+              Explore Spaces:
+            </span>
             {[
-              { label: "🌿 Garden & Cabanas", src: "/videos/hero.mp4" },
+              { label: "🌿 Garden Cabanas", src: "/videos/hero.mp4" },
               { label: "🍸 Craft Mixology", src: "/videos/cocktails.mp4" },
               { label: "🔥 Live Charcoal Kitchen", src: "/videos/food.mp4" },
               { label: "🍾 Resto-Bar Lounge", src: "/videos/bar.mp4" },
@@ -331,40 +300,44 @@ export default function HomePage() {
               <button
                 key={tab.src}
                 onClick={() => setHeroVideoSrc(tab.src)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all backdrop-blur-md border ${
+                className={`px-4 py-2 rounded-full text-xs tracking-wide transition-all ${
                   heroVideoSrc === tab.src
-                    ? "bg-[#C5A46D] text-[#1A1714] border-[#C5A46D] font-semibold shadow-lg scale-105"
-                    : "bg-black/40 text-stone-200 border-white/20 hover:bg-black/60 hover:text-white"
+                    ? "bg-[#C5A46D] text-[#12100E] font-bold shadow-lg scale-105"
+                    : "text-stone-300 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {tab.label}
               </button>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Highlights Micro-Strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-white/15">
-            <div className="p-2 text-center">
-              <p className="font-serif text-2xl font-bold text-white drop-shadow">35+</p>
-              <p className="text-[11px] text-[#E2CA9E] uppercase tracking-wider mt-0.5 font-medium">Signature Dishes</p>
+      {/* 2. LUXURY STATS RIBBON (Seamless transition between video and content) */}
+      <section className="bg-[#171412] text-white py-10 border-b border-[#C5A46D]/20 shadow-xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="space-y-1">
+              <p className="font-serif text-3xl sm:text-4xl font-bold text-[#E5C89C] tracking-tight">35+</p>
+              <p className="text-xs text-stone-300 uppercase tracking-[0.18em] font-medium">Signature Dishes</p>
             </div>
-            <div className="p-2 text-center">
-              <p className="font-serif text-2xl font-bold text-white drop-shadow">Single Malts</p>
-              <p className="text-[11px] text-[#E2CA9E] uppercase tracking-wider mt-0.5 font-medium">Curated Spirits Cellar</p>
+            <div className="space-y-1">
+              <p className="font-serif text-3xl sm:text-4xl font-bold text-[#E5C89C] tracking-tight">Speyside</p>
+              <p className="text-xs text-stone-300 uppercase tracking-[0.18em] font-medium">Single Malts Cellar</p>
             </div>
-            <div className="p-2 text-center">
-              <p className="font-serif text-2xl font-bold text-white drop-shadow">Open-Air</p>
-              <p className="text-[11px] text-[#E2CA9E] uppercase tracking-wider mt-0.5 font-medium">Lush Garden Cabanas</p>
+            <div className="space-y-1">
+              <p className="font-serif text-3xl sm:text-4xl font-bold text-[#E5C89C] tracking-tight">Open-Air</p>
+              <p className="text-xs text-stone-300 uppercase tracking-[0.18em] font-medium">Private Garden Cabanas</p>
             </div>
-            <div className="p-2 text-center">
-              <p className="font-serif text-2xl font-bold text-white drop-shadow">Universal QR</p>
-              <p className="text-[11px] text-[#E2CA9E] uppercase tracking-wider mt-0.5 font-medium">Instant Table Ordering</p>
+            <div className="space-y-1">
+              <p className="font-serif text-3xl sm:text-4xl font-bold text-[#E5C89C] tracking-tight">Universal QR</p>
+              <p className="text-xs text-stone-300 uppercase tracking-[0.18em] font-medium">Instant Table Ordering</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. RESTAURANT INTRODUCTION */}
+      {/* 3. RESTAURANT INTRODUCTION */}
       <section className="py-24 bg-[#F0E9DC]/60 border-y border-[#F0E9DC]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
