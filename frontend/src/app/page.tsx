@@ -175,8 +175,8 @@ export default function HomePage() {
 
   return (
     <div className="bg-[#FAF8F2] text-[#382D25] min-h-screen">
-      {/* 1. CINEMATIC VIDEO HERO (AWARD-WINNING LUXURY HOSPITALITY DESIGN) */}
-      <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#12100E]">
+      {/* 1. CINEMATIC VIDEO HERO (WHITE & LUXURY SAPPHIRE BLUE AESTHETIC) */}
+      <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#07111E]">
         {/* Full-Bleed 4K Ambient Video Background */}
         <div className="absolute inset-0 z-0">
           <video
@@ -195,90 +195,99 @@ export default function HomePage() {
             />
           </video>
           {/* Subtle multi-layer cinematic vignette for maximum video clarity and ultra-legible typography */}
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#12100E] via-transparent to-black/60" />
+          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#07111E] via-transparent to-black/60" />
         </div>
 
         {/* Top Luxury Live Bar */}
         <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex justify-between items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-[#C5A46D]/40 text-[#E5C89C] text-xs font-medium shadow-lg">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#07111E]/70 backdrop-blur-md border border-sky-400/50 text-sky-200 text-xs font-medium shadow-[0_0_15px_rgba(56,189,248,0.25)]">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
             <span className="tracking-wide">Bengaluru Flagship & Tirupati Luxury Outlets</span>
           </div>
 
           <div className="flex items-center gap-3">
             <button
               onClick={toggleHeroSound}
-              className="px-3 py-1.5 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-md border border-white/20 text-white text-xs font-medium flex items-center gap-2 transition-all shadow-lg hover:scale-105"
+              className="px-3.5 py-1.5 rounded-full bg-[#07111E]/70 hover:bg-[#07111E]/90 backdrop-blur-md border border-sky-400/40 text-white text-xs font-medium flex items-center gap-2 transition-all shadow-lg hover:scale-105"
               title={heroMuted ? "Unmute Ambient Sound" : "Mute Sound"}
             >
               {heroMuted ? (
                 <>
-                  <VolumeX className="w-3.5 h-3.5 text-stone-300" />
-                  <span className="hidden sm:inline">Audio Off</span>
+                  <VolumeX className="w-3.5 h-3.5 text-slate-300" />
+                  <span className="hidden sm:inline text-slate-300">Audio Off</span>
                 </>
               ) : (
                 <>
-                  <Volume2 className="w-3.5 h-3.5 text-[#E5C89C]" />
-                  <span className="hidden sm:inline text-[#E5C89C]">Playing</span>
+                  <Volume2 className="w-3.5 h-3.5 text-cyan-400" />
+                  <span className="hidden sm:inline text-cyan-300 font-semibold">Playing</span>
                 </>
               )}
             </button>
           </div>
         </div>
 
-        {/* Centerpiece: Weightless, Box-Free Luxury Typography Floating Directly Over The Video */}
+        {/* Centerpiece: Weightless, Pure White & Sapphire Blue Luxury Typography Floating Directly Over Video */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto py-12 space-y-8">
           {/* Brand Monogram Badge */}
-          <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-black/40 backdrop-blur-md border border-[#C5A46D]/80 text-[#E5C89C] text-xs font-semibold uppercase tracking-[0.3em] shadow-xl">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A46D]" />
+          <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-[#07111E]/80 backdrop-blur-md border border-sky-400 text-sky-300 text-xs font-semibold uppercase tracking-[0.3em] shadow-[0_0_25px_rgba(56,189,248,0.35)]">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-300" />
             <span>European Luxury Dining & Resto-Bar</span>
           </div>
 
-          {/* Grand Master Title */}
+          {/* Grand Master Title in Diamond White & Sapphire Glow */}
           <div className="space-y-4">
-            <h1 className="font-serif text-6xl sm:text-8xl lg:text-9xl font-extrabold tracking-[0.18em] text-white drop-shadow-[0_12px_35px_rgba(0,0,0,0.95)] uppercase leading-none">
+            <h1 
+              style={{ color: "#FFFFFF" }}
+              className="font-serif text-6xl sm:text-8xl lg:text-9xl font-black tracking-[0.2em] text-white drop-shadow-[0_12px_40px_rgba(0,0,0,1)] uppercase leading-none"
+            >
               KICK BUNK
             </h1>
-            <p className="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-[#F2DFBA] font-light tracking-wide drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]">
+            <p 
+              style={{ color: "#38BDF8" }}
+              className="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-sky-400 font-normal tracking-wide drop-shadow-[0_6px_25px_rgba(0,0,0,1)]"
+            >
               Where Flavours Meet Extraordinary Experiences.
             </p>
           </div>
 
-          {/* Concise Narrative */}
-          <p className="max-w-2xl mx-auto text-base sm:text-lg text-neutral-100 font-light leading-relaxed drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]">
+          {/* Concise Narrative in Crisp White */}
+          <p 
+            style={{ color: "#F1F5F9" }}
+            className="max-w-2xl mx-auto text-base sm:text-lg text-slate-100 font-light leading-relaxed drop-shadow-[0_3px_12px_rgba(0,0,0,1)]"
+          >
             An expansive sanctuary of fairy-lit garden cabanas, live charcoal tandoor gastronomy, and handcrafted nightlife mixology. Welcome to hospitality elevated.
           </p>
 
           {/* Dine-in quick action banner if guest has scanned table QR */}
           {isDineInActive && tableNumber && (
-            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-black/60 backdrop-blur-md border border-[#C5A46D] text-[#FAF8F2] text-sm font-semibold shadow-2xl">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#C5A46D] animate-ping" />
-              <span>You are seated at <strong className="text-[#E5C89C]">Table {tableNumber}</strong>. Direct order routing active!</span>
+            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-[#07111E]/80 backdrop-blur-md border border-sky-400 text-white text-sm font-semibold shadow-2xl">
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
+              <span>You are seated at <strong className="text-cyan-300">Table {tableNumber}</strong>. Direct order routing active!</span>
             </div>
           )}
 
-          {/* Primary Action Buttons */}
+          {/* Primary Action Buttons in Sapphire Blue & Pure White */}
           <div className="flex flex-wrap items-center justify-center gap-5 pt-4">
             <a
               href="/menu"
-              className="py-4 px-9 rounded-full bg-[#C5A46D] hover:bg-[#d8b77f] text-[#12100E] font-bold text-xs tracking-[0.2em] uppercase transition-all shadow-[0_10px_30px_rgba(197,164,109,0.4)] hover:scale-105 flex items-center gap-2.5"
+              className="py-4 px-9 rounded-full bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 hover:from-blue-500 hover:to-cyan-300 text-white font-bold text-xs tracking-[0.2em] uppercase transition-all shadow-[0_10px_30px_rgba(14,165,233,0.55)] hover:scale-105 flex items-center gap-2.5"
             >
               <span>Explore Digital Menu</span>
-              <ArrowRight className="w-4 h-4 text-[#12100E]" />
+              <ArrowRight className="w-4 h-4 text-white" />
             </a>
             <a
               href="/reservations"
-              className="py-4 px-9 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md text-white border border-[#C5A46D] font-semibold text-xs tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 flex items-center gap-2.5"
+              className="py-4 px-9 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-sky-400/90 font-semibold text-xs tracking-[0.2em] uppercase transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:scale-105 flex items-center gap-2.5"
             >
-              <Calendar className="w-4 h-4 text-[#E5C89C]" />
+              <Calendar className="w-4 h-4 text-sky-300" />
               <span>Reserve a Table</span>
             </a>
             <a
               href="#experience"
-              className="py-4 px-7 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-medium text-xs tracking-wider transition-all hover:scale-105 flex items-center gap-2 shadow-lg"
+              className="py-4 px-7 rounded-full bg-[#07111E]/70 hover:bg-[#07111E]/90 backdrop-blur-md text-slate-100 hover:text-white border border-sky-500/40 font-medium text-xs tracking-wider transition-all hover:scale-105 flex items-center gap-2 shadow-lg"
             >
-              <Play className="w-3.5 h-3.5 text-[#C5A46D] fill-[#C5A46D]" />
+              <Play className="w-3.5 h-3.5 text-cyan-400 fill-cyan-400" />
               <span>Watch Experience</span>
             </a>
           </div>
@@ -286,8 +295,8 @@ export default function HomePage() {
 
         {/* Bottom Floating Atmosphere Switcher Strip */}
         <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-          <div className="bg-black/50 backdrop-blur-md border border-white/15 rounded-full p-2 flex flex-wrap items-center justify-center gap-2 shadow-2xl">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C5A46D] px-3 hidden md:inline">
+          <div className="bg-[#07111E]/80 backdrop-blur-md border border-sky-500/30 rounded-full p-2 flex flex-wrap items-center justify-center gap-2 shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-400 px-3 hidden md:inline">
               Explore Spaces:
             </span>
             {[
@@ -302,8 +311,8 @@ export default function HomePage() {
                 onClick={() => setHeroVideoSrc(tab.src)}
                 className={`px-4 py-2 rounded-full text-xs tracking-wide transition-all ${
                   heroVideoSrc === tab.src
-                    ? "bg-[#C5A46D] text-[#12100E] font-bold shadow-lg scale-105"
-                    : "text-stone-300 hover:text-white hover:bg-white/10"
+                    ? "bg-gradient-to-r from-blue-600 to-sky-500 text-white font-bold shadow-[0_0_20px_rgba(56,189,248,0.5)] scale-105"
+                    : "text-slate-300 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {tab.label}
@@ -313,25 +322,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. LUXURY STATS RIBBON (Seamless transition between video and content) */}
-      <section className="bg-[#171412] text-white py-10 border-b border-[#C5A46D]/20 shadow-xl">
+      {/* 2. LUXURY STATS RIBBON (White & Sapphire Blue Accent) */}
+      <section className="bg-[#07111E] text-white py-10 border-b border-sky-500/30 shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="space-y-1">
-              <p className="font-serif text-3xl sm:text-4xl font-bold text-[#E5C89C] tracking-tight">35+</p>
-              <p className="text-xs text-stone-300 uppercase tracking-[0.18em] font-medium">Signature Dishes</p>
+              <p className="font-serif text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-sky-100 to-sky-400 tracking-tight">35+</p>
+              <p className="text-xs text-sky-300 uppercase tracking-[0.18em] font-medium">Signature Dishes</p>
             </div>
             <div className="space-y-1">
-              <p className="font-serif text-3xl sm:text-4xl font-bold text-[#E5C89C] tracking-tight">Speyside</p>
-              <p className="text-xs text-stone-300 uppercase tracking-[0.18em] font-medium">Single Malts Cellar</p>
+              <p className="font-serif text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-sky-100 to-sky-400 tracking-tight">Speyside</p>
+              <p className="text-xs text-sky-300 uppercase tracking-[0.18em] font-medium">Single Malts Cellar</p>
             </div>
             <div className="space-y-1">
-              <p className="font-serif text-3xl sm:text-4xl font-bold text-[#E5C89C] tracking-tight">Open-Air</p>
-              <p className="text-xs text-stone-300 uppercase tracking-[0.18em] font-medium">Private Garden Cabanas</p>
+              <p className="font-serif text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-sky-100 to-sky-400 tracking-tight">Open-Air</p>
+              <p className="text-xs text-sky-300 uppercase tracking-[0.18em] font-medium">Private Garden Cabanas</p>
             </div>
             <div className="space-y-1">
-              <p className="font-serif text-3xl sm:text-4xl font-bold text-[#E5C89C] tracking-tight">Universal QR</p>
-              <p className="text-xs text-stone-300 uppercase tracking-[0.18em] font-medium">Instant Table Ordering</p>
+              <p className="font-serif text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-sky-100 to-sky-400 tracking-tight">Universal QR</p>
+              <p className="text-xs text-sky-300 uppercase tracking-[0.18em] font-medium">Instant Table Ordering</p>
             </div>
           </div>
         </div>
