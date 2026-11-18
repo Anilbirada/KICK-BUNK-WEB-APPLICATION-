@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700;800&family=Cinzel:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #FAF8F2;
+  --bg-secondary: #F0E9DC;
+  --color-accent: #C5A46D;
+  --color-terracotta: #B66A4B;
+  --color-heading: #382D25;
+  --color-body: #77716A;
+}
+
+body {
+  color: var(--color-body);
+  background-color: var(--bg-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .font-playfair, .font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--color-heading);
+  letter-spacing: -0.01em;
+}
+
+.font-inter, .font-sans {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', Georgia, serif;
+  letter-spacing: 0.12em;
+}
+
+/* Custom Light Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A46D;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B66A4B;
+}
+
+/* Smooth Video Transition */
+.video-card-zoom {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+}
+.video-card-zoom:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 20px 40px -10px rgba(56, 45, 37, 0.15);
+}
