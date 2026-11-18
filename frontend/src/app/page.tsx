@@ -199,32 +199,25 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#07111E] via-transparent to-black/60" />
         </div>
 
-        {/* Top Luxury Live Bar */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex justify-between items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#07111E]/70 backdrop-blur-md border border-sky-400/50 text-sky-200 text-xs font-medium shadow-[0_0_15px_rgba(56,189,248,0.25)]">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-            <span className="tracking-wide">Bengaluru Flagship & Tirupati Luxury Outlets</span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <button
-              onClick={toggleHeroSound}
-              className="px-3.5 py-1.5 rounded-full bg-[#07111E]/70 hover:bg-[#07111E]/90 backdrop-blur-md border border-sky-400/40 text-white text-xs font-medium flex items-center gap-2 transition-all shadow-lg hover:scale-105"
-              title={heroMuted ? "Unmute Ambient Sound" : "Mute Sound"}
-            >
-              {heroMuted ? (
-                <>
-                  <VolumeX className="w-3.5 h-3.5 text-slate-300" />
-                  <span className="hidden sm:inline text-slate-300">Audio Off</span>
-                </>
-              ) : (
-                <>
-                  <Volume2 className="w-3.5 h-3.5 text-cyan-400" />
-                  <span className="hidden sm:inline text-cyan-300 font-semibold">Playing</span>
-                </>
-              )}
-            </button>
-          </div>
+        {/* Top Sound Control */}
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex justify-end items-center">
+          <button
+            onClick={toggleHeroSound}
+            className="px-4 py-2 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md border border-sky-400/30 text-white text-xs font-medium flex items-center gap-2 transition-all shadow-lg hover:scale-105"
+            title={heroMuted ? "Unmute Ambient Sound" : "Mute Sound"}
+          >
+            {heroMuted ? (
+              <>
+                <VolumeX className="w-3.5 h-3.5 text-slate-300" />
+                <span className="hidden sm:inline text-slate-300">Audio Off</span>
+              </>
+            ) : (
+              <>
+                <Volume2 className="w-3.5 h-3.5 text-cyan-400" />
+                <span className="hidden sm:inline text-cyan-300 font-semibold">Playing</span>
+              </>
+            )}
+          </button>
         </div>
 
         {/* Centerpiece: Weightless, Pure White & Sapphire Blue Luxury Typography Floating Directly Over Video */}
