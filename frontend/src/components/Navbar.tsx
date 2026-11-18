@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import { 
   ShoppingBag, Sparkles, Calendar, Menu as MenuIcon, X, 
-  Wine, UtensilsCrossed, PartyPopper, Bot, Compass, Shield
+  Wine, UtensilsCrossed, PartyPopper, Bot, Compass, Shield, Instagram
 } from "lucide-react";
 import { useTableSession } from "../context/TableSessionContext";
 import { useCart } from "../context/CartContext";
@@ -93,8 +93,18 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Actions: Reservations, Cart, Admin Portal */}
-          <div className="hidden sm:flex items-center gap-4">
+          {/* Actions: Reservations, Cart, Instagram, Admin Portal */}
+          <div className="hidden sm:flex items-center gap-3">
+            <a
+              href="https://www.instagram.com/kickbunkresturantbar2020/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full text-[#77716A] hover:text-[#B66A4B] hover:bg-[#F0E9DC] transition-colors"
+              title="Follow KICK BUNK on Instagram @kickbunkresturantbar2020"
+            >
+              <Instagram className="w-4 h-4 text-[#B66A4B]" />
+            </a>
+
             <a
               href="/reservations"
               className="px-4 py-2 rounded-full border border-[#C5A46D] text-[#382D25] hover:bg-[#C5A46D] hover:text-[#FAF8F2] font-semibold text-xs tracking-wider uppercase transition-all duration-300"

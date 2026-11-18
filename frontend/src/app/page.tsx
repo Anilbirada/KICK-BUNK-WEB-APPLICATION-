@@ -5,7 +5,7 @@ import {
   Sparkles, UtensilsCrossed, Wine, Calendar, ChevronRight, 
   Star, MapPin, Phone, Clock, ShieldCheck, ArrowRight, Check,
   Play, Pause, Volume2, VolumeX, Maximize2, X, MessageSquare, Bot,
-  PartyPopper, Compass, ChevronDown, Send, Eye, EyeOff
+  PartyPopper, Compass, ChevronDown, Send, Eye, EyeOff, Instagram
 } from "lucide-react";
 import { api } from "../lib/api";
 import { ProductDetailModal } from "../components/ProductDetailModal";
@@ -848,6 +848,65 @@ export default function HomePage() {
             >
               <Phone className="w-4 h-4 text-[#C5A46D]" />
               <span>Host Desk: +91 99453 21367</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. SOCIAL INSTAGRAM SHOWCASE */}
+      <section className="py-20 bg-[#FAF8F2] border-t border-[#F0E9DC]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+          <div className="space-y-3">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F0E9DC] border border-[#C5A46D] text-[#382D25] text-xs font-semibold uppercase tracking-[0.25em]">
+              <Instagram className="w-3.5 h-3.5 text-[#B66A4B]" />
+              <span>Follow The Experience</span>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#382D25]">
+              @kickbunkresturantbar2020
+            </h2>
+            <p className="text-sm sm:text-base text-[#77716A] max-w-2xl mx-auto">
+              Follow our official Instagram page for daily chef specials, live acoustic nights, mixology masterclasses, and vibrant garden celebrations.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+            {[
+              { img: "/images/kickbunk/google_01_garden_lights_night.jpg", label: "Garden Nights" },
+              { img: "/images/kickbunk/magicpin_01_kalmi_kebab.webp", label: "Charcoal Tandoor" },
+              { img: "/images/kickbunk/restaurant_guru_interior.jpg", label: "Craft Cocktails" },
+              { img: "/images/kickbunk/magicpin_09_garden_pathway_night.webp", label: "Cabana Dining" },
+              { img: "/images/kickbunk/restaurant_guru_facade.jpg", label: "Speyside Cellar" },
+              { img: "/images/kickbunk/google_06_outdoor_lawn.jpg", label: "Live Screening" }
+            ].map((post, i) => (
+              <a
+                key={i}
+                href="https://www.instagram.com/kickbunkresturantbar2020/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block border border-[#F0E9DC]"
+              >
+                <img
+                  src={post.img}
+                  alt={post.label}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-2 text-white">
+                  <Instagram className="w-6 h-6 text-[#E5C89C] mb-1" />
+                  <span className="text-[11px] font-medium text-center">{post.label}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="pt-2">
+            <a
+              href="https://www.instagram.com/kickbunkresturantbar2020/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 py-3.5 px-8 rounded-full bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737] text-white font-semibold text-xs tracking-[0.15em] uppercase shadow-lg hover:shadow-2xl hover:scale-105 transition-all"
+            >
+              <Instagram className="w-4 h-4 text-white" />
+              <span>Follow On Instagram</span>
             </a>
           </div>
         </div>

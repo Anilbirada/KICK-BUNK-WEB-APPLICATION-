@@ -26,11 +26,24 @@ export const Footer: React.FC = () => {
             <p className="text-xs text-[#77716A] leading-relaxed">
               Where Flavours Meet Extraordinary Experiences. An expansive oasis of garden cabanas, live charcoal tandoor gastronomy, and handcrafted nightlife mixology.
             </p>
-            <div className="flex items-center gap-3 pt-1">
-              <a href="#" className="w-8 h-8 rounded-full bg-[#FAF8F2] border border-[#C5A46D]/40 text-[#382D25] hover:text-[#B66A4B] flex items-center justify-center transition-colors">
-                <Instagram className="w-4 h-4" />
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <a 
+                href="https://www.instagram.com/kickbunkresturantbar2020/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF8F2] border border-[#C5A46D] text-[#382D25] hover:text-[#B66A4B] hover:border-[#B66A4B] text-xs font-semibold transition-all shadow-sm group"
+                title="Follow KICK BUNK on Instagram"
+              >
+                <Instagram className="w-4 h-4 text-[#B66A4B] group-hover:scale-110 transition-transform" />
+                <span>@kickbunkresturantbar2020</span>
               </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-[#FAF8F2] border border-[#C5A46D]/40 text-[#382D25] hover:text-[#B66A4B] flex items-center justify-center transition-colors">
+              <a 
+                href="https://www.facebook.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-[#FAF8F2] border border-[#C5A46D]/40 text-[#382D25] hover:text-[#B66A4B] flex items-center justify-center transition-colors"
+                title="Facebook"
+              >
                 <Facebook className="w-4 h-4" />
               </a>
             </div>
