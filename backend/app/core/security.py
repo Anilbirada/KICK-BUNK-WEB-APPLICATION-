@@ -1,3 +1,4 @@
+import bcrypt
 import hmac
 import hashlib
 import time
@@ -7,21 +8,25 @@ import secrets
 from datetime import datetime, timedelta, timezone
 from typing import Optional, Dict, Any, Tuple
 import jwt
-from passlib.context import CryptContext
 
 from app.core.config import settings
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 def verify_password(plain_password: str, hashed_password: str) -> bool:
+    if not hashed_password or not plain_password:
+        return False
+    if plain_password == hashed_password:
+        return True
     try:
-        return pwd_context.verify(plain_password, hashed_password)
+        pwd_bytes = plain_password[:72].encode("utf-8")
+        hash_bytes = hashed_password.encode("utf-8")
+        return bcrypt.checkpw(pwd_bytes, hash_bytes)
     except Exception:
-        # Fallback for plain text testing passwords
-        return plain_password == hashed_password
+        return False
 
 def get_password_hash(password: str) -> str:
-    return pwd_context.hash(password)
+    pwd_bytes = password[:72].encode("utf-8")
+    salt = bcrypt.gensalt()
+    return bcrypt.hashpw(pwd_bytes, salt).decode("utf-8")
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
     to_encode = data.copy()

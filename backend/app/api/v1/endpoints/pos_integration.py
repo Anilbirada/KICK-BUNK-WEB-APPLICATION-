@@ -24,7 +24,7 @@ def get_pending_pos_events(
     if outlet_id:
         query = query.filter(PosOutboxEvent.outlet_id == outlet_id)
         
-    events = query.order_by(PosOutboxEvent.created_at.asc()).limit(limit).all()
+    events = query.order_by(PosOutboxEvent.created_at.desc()).limit(limit).all()
     return [
         {
             "id": ev.id,

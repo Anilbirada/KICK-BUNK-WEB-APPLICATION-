@@ -1,5 +1,6 @@
 import datetime
 import random
+import secrets
 from sqlalchemy.orm import Session
 from typing import Dict, Any, Optional
 
@@ -14,8 +15,8 @@ from app.core.config import settings
 class OrderService:
     @staticmethod
     def generate_order_number(outlet_code: str) -> str:
-        date_str = datetime.datetime.now().strftime("%Y%m%d")
-        rand_suffix = random.randint(1000, 9999)
+        date_str = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        rand_suffix = secrets.token_hex(2).upper()
         return f"KB-{outlet_code}-{date_str}-{rand_suffix}"
 
     @staticmethod
