@@ -5,7 +5,7 @@ import {
   Sparkles, UtensilsCrossed, Wine, Calendar, ChevronRight, 
   Star, MapPin, Phone, Clock, ShieldCheck, ArrowRight, Check,
   Play, Pause, Volume2, VolumeX, Maximize2, X, MessageSquare, Bot,
-  PartyPopper, Compass, ChevronDown, Send
+  PartyPopper, Compass, ChevronDown, Send, Eye, EyeOff
 } from "lucide-react";
 import { api } from "../lib/api";
 import { ProductDetailModal } from "../components/ProductDetailModal";
@@ -94,6 +94,19 @@ export default function HomePage() {
   const [isVideoMuted, setIsVideoMuted] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
 
+  // Hero Ambient Video Controls & Visibility
+  const [heroVideoSrc, setHeroVideoSrc] = useState("/videos/hero.mp4");
+  const [isCardMinimized, setIsCardMinimized] = useState(false);
+  const [heroMuted, setHeroMuted] = useState(true);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleHeroSound = () => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.muted = !heroVideoRef.current.muted;
+      setHeroMuted(heroVideoRef.current.muted);
+    }
+  };
+
   // AI Assistant Chat State
   const [isAiOpen, setIsAiOpen] = useState(false);
   const [aiInput, setAiInput] = useState("");
@@ -163,100 +176,189 @@ export default function HomePage() {
   return (
     <div className="bg-[#FAF8F2] text-[#382D25] min-h-screen">
       {/* 1. CINEMATIC VIDEO HERO */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#1A1714]">
+      <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#1A1714]">
         {/* Crisp, Crystal-Clear Ambient Video Background */}
         <div className="absolute inset-0 z-0">
           <video
+            ref={heroVideoRef}
+            key={heroVideoSrc}
             autoPlay
             loop
-            muted
+            muted={heroMuted}
             playsInline
             poster="/images/kickbunk/google_01_garden_lights_night.jpg"
-            className="w-full h-full object-cover opacity-80 filter brightness-90 contrast-105"
+            className="w-full h-full object-cover opacity-100"
           >
             <source
-              src="/videos/hero.mp4"
+              src={heroVideoSrc}
               type="video/mp4"
             />
           </video>
-          {/* Subtle cinematic vignette allowing crystal-clear visuals */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#FAF8F2]" />
+          {/* Subtle cinematic vignette allowing crystal-clear visuals while keeping text razor-sharp */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1714] via-black/30 to-black/50" />
         </div>
 
-        {/* Floating Light Luxury Frosted Glass Content Card */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12 sm:py-16">
-          <div className="bg-[#FAF8F2]/90 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-[#C5A46D]/60 shadow-2xl space-y-6">
-            {/* Brand Monogram Badge */}
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#F0E9DC] border border-[#C5A46D] text-[#382D25] text-xs font-semibold uppercase tracking-[0.25em] shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-[#C5A46D]" />
-              European Luxury Dining & Resto-Bar
-            </div>
+        {/* Top Floating Controls: Live Status, Sound Toggle & View Full Video Toggle */}
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex justify-between items-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-[#E2CA9E] text-xs font-medium">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Bengaluru & Tirupati Live</span>
+          </div>
 
-            {/* Hero Typography */}
-            <div className="space-y-3">
-              <h1 className="font-serif text-5xl sm:text-7xl font-bold tracking-tight text-[#382D25] leading-none">
-                KICK BUNK
-              </h1>
-              <p className="font-serif italic text-2xl sm:text-3xl text-[#B66A4B] font-normal tracking-wide">
-                Where Flavours Meet Extraordinary Experiences.
-              </p>
-            </div>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={toggleHeroSound}
+              className="p-2.5 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white transition-all shadow-lg hover:scale-105"
+              title={heroMuted ? "Unmute Ambient Sound" : "Mute Sound"}
+            >
+              {heroMuted ? <VolumeX className="w-4 h-4 text-stone-300" /> : <Volume2 className="w-4 h-4 text-[#E2CA9E]" />}
+            </button>
+            <button
+              onClick={() => setIsCardMinimized(!isCardMinimized)}
+              className="px-4 py-2 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-md border border-[#C5A46D]/60 text-white text-xs font-semibold tracking-wider flex items-center gap-2 transition-all shadow-lg hover:scale-105"
+              title="Toggle Full Background Video View"
+            >
+              {isCardMinimized ? (
+                <>
+                  <Eye className="w-4 h-4 text-[#E2CA9E]" />
+                  <span>Show Details</span>
+                </>
+              ) : (
+                <>
+                  <Maximize2 className="w-4 h-4 text-[#E2CA9E]" />
+                  <span>View Full Video</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
 
-            <p className="max-w-2xl mx-auto text-sm sm:text-base text-[#77716A] font-normal leading-relaxed">
-              An expansive sanctuary of fairy-lit garden cabanas, live charcoal tandoor gastronomy, and handcrafted nightlife mixology. Welcome to hospitality elevated.
-            </p>
-
-            {/* Dine-in quick action banner if guest has scanned table QR */}
-            {isDineInActive && tableNumber && (
-              <div className="inline-flex items-center gap-3 p-3.5 rounded-2xl bg-[#F0E9DC] border border-[#C5A46D] text-[#382D25] text-sm font-semibold shadow-md">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#B66A4B] animate-ping" />
-                <span>You are seated at <strong>Table {tableNumber}</strong>. Digital orders route directly to your table steward!</span>
+        {/* Center Content: Translucent Luxury Glass Card OR Minimized Bottom Bar */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto py-8">
+          {!isCardMinimized ? (
+            <div className="bg-black/40 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-white/20 shadow-2xl space-y-6 text-white transition-all duration-500">
+              {/* Brand Monogram Badge */}
+              <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-[#C5A46D] text-[#E2CA9E] text-xs font-semibold uppercase tracking-[0.25em] shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#C5A46D]" />
+                European Luxury Dining & Resto-Bar
               </div>
-            )}
 
-            {/* Primary Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+              {/* Hero Typography */}
+              <div className="space-y-3">
+                <h1 className="font-serif text-5xl sm:text-7xl font-bold tracking-tight text-white drop-shadow-lg leading-none">
+                  KICK BUNK
+                </h1>
+                <p className="font-serif italic text-2xl sm:text-3xl text-[#E2CA9E] font-normal tracking-wide drop-shadow">
+                  Where Flavours Meet Extraordinary Experiences.
+                </p>
+              </div>
+
+              <p className="max-w-2xl mx-auto text-sm sm:text-base text-stone-200 font-normal leading-relaxed drop-shadow">
+                An expansive sanctuary of fairy-lit garden cabanas, live charcoal tandoor gastronomy, and handcrafted nightlife mixology. Welcome to hospitality elevated.
+              </p>
+
+              {/* Dine-in quick action banner if guest has scanned table QR */}
+              {isDineInActive && tableNumber && (
+                <div className="inline-flex items-center gap-3 p-3.5 rounded-2xl bg-black/50 backdrop-blur-md border border-[#C5A46D] text-[#FAF8F2] text-sm font-semibold shadow-md">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#B66A4B] animate-ping" />
+                  <span>You are seated at <strong>Table {tableNumber}</strong>. Digital orders route directly to your table steward!</span>
+                </div>
+              )}
+
+              {/* Primary Action Buttons */}
+              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+                <a
+                  href="/menu"
+                  className="py-3.5 px-8 rounded-full bg-[#C5A46D] hover:bg-[#d8b77f] text-[#1A1714] font-bold text-xs tracking-[0.15em] uppercase transition-all shadow-lg hover:shadow-2xl hover:scale-105 flex items-center gap-2.5"
+                >
+                  <span>Explore Digital Menu</span>
+                  <ArrowRight className="w-4 h-4 text-[#1A1714]" />
+                </a>
+                <a
+                  href="/reservations"
+                  className="py-3.5 px-8 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-[#C5A46D] font-semibold text-xs tracking-[0.15em] uppercase transition-all hover:scale-105 flex items-center gap-2"
+                >
+                  <Calendar className="w-4 h-4 text-[#E2CA9E]" />
+                  <span>Reserve a Table</span>
+                </a>
+                <a
+                  href="#experience"
+                  className="py-3.5 px-6 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md text-white border border-white/20 font-medium text-xs tracking-wider transition-colors flex items-center gap-2 shadow-sm"
+                >
+                  <Play className="w-3.5 h-3.5 text-[#C5A46D] fill-[#C5A46D]" />
+                  <span>Watch Experience</span>
+                </a>
+              </div>
+            </div>
+          ) : (
+            <div className="animate-fade-in inline-flex flex-wrap items-center justify-center gap-4 p-4 rounded-full bg-black/60 backdrop-blur-md border border-[#C5A46D] shadow-2xl">
+              <span className="font-serif text-lg font-bold text-[#E2CA9E] px-3">KICK BUNK</span>
               <a
                 href="/menu"
-                className="py-3.5 px-8 rounded-full bg-[#382D25] hover:bg-[#241D17] text-[#FAF8F2] font-semibold text-xs tracking-[0.15em] uppercase transition-all shadow-md hover:shadow-xl hover:scale-105 flex items-center gap-2.5"
+                className="py-2.5 px-6 rounded-full bg-[#C5A46D] hover:bg-[#d8b77f] text-[#1A1714] font-bold text-xs tracking-wider uppercase transition-all shadow-md flex items-center gap-2"
               >
-                <span>Explore Digital Menu</span>
-                <ArrowRight className="w-4 h-4 text-[#C5A46D]" />
+                <span>Order Now</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </a>
               <a
                 href="/reservations"
-                className="py-3.5 px-8 rounded-full bg-[#F0E9DC] hover:bg-[#E2CA9E] text-[#382D25] border border-[#C5A46D] font-semibold text-xs tracking-[0.15em] uppercase transition-all hover:scale-105 flex items-center gap-2"
+                className="py-2.5 px-6 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-semibold tracking-wider uppercase transition-all"
               >
-                <Calendar className="w-4 h-4 text-[#B66A4B]" />
-                <span>Reserve a Table</span>
+                Reserve Table
               </a>
-              <a
-                href="#experience"
-                className="py-3.5 px-6 rounded-full bg-white/80 hover:bg-white text-[#77716A] hover:text-[#382D25] border border-[#C5A46D]/40 font-medium text-xs tracking-wider transition-colors flex items-center gap-2 shadow-sm"
+              <button
+                onClick={() => setIsCardMinimized(false)}
+                className="py-2.5 px-4 rounded-full bg-white/10 hover:bg-white/20 text-stone-300 text-xs flex items-center gap-1.5"
               >
-                <Play className="w-3.5 h-3.5 text-[#C5A46D] fill-[#C5A46D]" />
-                <span>Watch Experience</span>
-              </a>
+                <Eye className="w-3.5 h-3.5" />
+                <span>Details</span>
+              </button>
             </div>
+          )}
+        </div>
+
+        {/* Bottom Section: Ambient Video Switcher Tabs & Highlights */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 space-y-4">
+          {/* Interactive Video Switcher Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {[
+              { label: "🌿 Garden & Cabanas", src: "/videos/hero.mp4" },
+              { label: "🍸 Craft Mixology", src: "/videos/cocktails.mp4" },
+              { label: "🔥 Live Charcoal Kitchen", src: "/videos/food.mp4" },
+              { label: "🍾 Resto-Bar Lounge", src: "/videos/bar.mp4" },
+              { label: "🎉 Nightlife & Ambiance", src: "/videos/ambience.mp4" }
+            ].map((tab) => (
+              <button
+                key={tab.src}
+                onClick={() => setHeroVideoSrc(tab.src)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all backdrop-blur-md border ${
+                  heroVideoSrc === tab.src
+                    ? "bg-[#C5A46D] text-[#1A1714] border-[#C5A46D] font-semibold shadow-lg scale-105"
+                    : "bg-black/40 text-stone-200 border-white/20 hover:bg-black/60 hover:text-white"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
 
           {/* Highlights Micro-Strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 max-w-4xl mx-auto border-t border-[#C5A46D]/20">
-            <div className="p-3 text-center">
-              <p className="font-serif text-2xl font-bold text-[#382D25]">35+</p>
-              <p className="text-xs text-[#77716A] uppercase tracking-wider mt-0.5">Signature Dishes</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-white/15">
+            <div className="p-2 text-center">
+              <p className="font-serif text-2xl font-bold text-white drop-shadow">35+</p>
+              <p className="text-[11px] text-[#E2CA9E] uppercase tracking-wider mt-0.5 font-medium">Signature Dishes</p>
             </div>
-            <div className="p-3 text-center">
-              <p className="font-serif text-2xl font-bold text-[#382D25]">Single Malts</p>
-              <p className="text-xs text-[#77716A] uppercase tracking-wider mt-0.5">Curated Bar Cellar</p>
+            <div className="p-2 text-center">
+              <p className="font-serif text-2xl font-bold text-white drop-shadow">Single Malts</p>
+              <p className="text-[11px] text-[#E2CA9E] uppercase tracking-wider mt-0.5 font-medium">Curated Spirits Cellar</p>
             </div>
-            <div className="p-3 text-center">
-              <p className="font-serif text-2xl font-bold text-[#382D25]">Open-Air</p>
-              <p className="text-xs text-[#77716A] uppercase tracking-wider mt-0.5">Private Garden Cabanas</p>
+            <div className="p-2 text-center">
+              <p className="font-serif text-2xl font-bold text-white drop-shadow">Open-Air</p>
+              <p className="text-[11px] text-[#E2CA9E] uppercase tracking-wider mt-0.5 font-medium">Lush Garden Cabanas</p>
             </div>
-            <div className="p-3 text-center">
-              <p className="font-serif text-2xl font-bold text-[#382D25]">Universal QR</p>
-              <p className="text-xs text-[#77716A] uppercase tracking-wider mt-0.5">Seamless Table Ordering</p>
+            <div className="p-2 text-center">
+              <p className="font-serif text-2xl font-bold text-white drop-shadow">Universal QR</p>
+              <p className="text-[11px] text-[#E2CA9E] uppercase tracking-wider mt-0.5 font-medium">Instant Table Ordering</p>
             </div>
           </div>
         </div>
